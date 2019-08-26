@@ -32,9 +32,12 @@ then
     export PASSWORD="test"
 fi
 
-echo "Creating user $USER with password $PASSWORD"
-adduser -m -u 1000 -U $USER
-echo "$USER:$PASSWORD" | chpasswd
+if [[ ! -e /home/$USER ]]
+then
+    echo "Creating user $USER with password $PASSWORD"
+    adduser -m -u 1000 -U $USER
+fi
 
+echo "$USER:$PASSWORD" | chpasswd
 echo "Starting sshd deamon..."
 /sbin/sshd -D
