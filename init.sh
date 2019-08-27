@@ -15,7 +15,10 @@ then
     ssh-keygen -f /etc/ssh/host_keys/ssh_host_ecdsa_key -N '' -t ecdsa -b 521
     ssh-keygen -f /etc/ssh/host_keys/ssh_host_rsa_key -N '' -t rsa
     ssh-keygen -f /etc/ssh/host_keys/ssh_host_ed25519_key -N '' -t ed25519
-else
+fi
+
+if [[ -e /etc/ssh/ssh_host_ecdsa_key ]]
+then
     rm /etc/ssh/ssh_host_ecdsa_key
     rm  /etc/ssh/ssh_host_rsa_key
     rm  /etc/ssh/ssh_host_ed25519_key
